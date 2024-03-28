@@ -31,15 +31,15 @@ app.get("/films", async (req, res) => {
 })
 
 app.get("/films/:slug", async (req, res) => {
-    try{
+    try {
         const slug = req.params.slug;
         const response = await axios.get(`${endpoint}/${slug}/play/`);
         const $ = cheerio.load(response.data);
         const iframes = [];
         $("#server-list .server-wrapper").each((index, element) => {
-        iframes.push({
-            iframe: `https://rebahin.shop/iembed/?source=${$(element).find(".server").attr("data-iframe")}`
-        });
+            iframes.push({
+                iframe: `https://rebahin.shop/iembed/?source=${$(element).find(".server").attr("data-iframe")}`
+            });
         })
         const data = {
             nama: $(".mvic-tagline2 > h3").text(),
@@ -47,7 +47,7 @@ app.get("/films/:slug", async (req, res) => {
             iframes
         }
         return res.status(200).json(data);
-    }catch(e){
+    } catch (e) {
         return res.status(400).json(e);
     }
 });
