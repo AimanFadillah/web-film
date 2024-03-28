@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import ConfigAxios from "../variabel/ConfigAxios";
+import Loading from "../component/Loading";
 
 export default function Show () {
     const slug = useParams().slug
-    const [film,setFilm] = useState({});
+    const [film,setFilm] = useState();
     const [iframe,setIframe] = useState();
     const [namaIframe,setNamaIframe] = useState();
 
@@ -18,7 +19,7 @@ export default function Show () {
         setIframe(response.data.iframes[response.data.iframes.length - 1].iframe);
     },[]);
 
-    return <div className="container mt-2">
+    return film ? <div className="container mt-2">
         <div className="row">
             <div className="col-md-12" style={{height:"500px"}} >
                 <iframe sandbox="allow-same-origin allow-scripts allow-forms" src={iframe} allowFullScreen ></iframe>
@@ -42,5 +43,5 @@ export default function Show () {
                 </div>
             </div>
         </div>
-    </div>
+    </div> : <Loading />
 }
