@@ -9,7 +9,7 @@ export default function Utama () {
     const [page,setPage] = useState(history.state.page || 1);
 
     useEffect(() => {
-        getFilms();
+        !films ? getFilms() : undefined; 
     },[]);
 
 
@@ -18,7 +18,7 @@ export default function Utama () {
         setFilms(films ?  [...films,...response.data] : response.data);
         history.replaceState({
             films:films ?  [...films,...response.data] : response.data,
-            page:page
+            page:page + 1
         },"","");
         setPage(page + 1)
     },[films]);
@@ -42,6 +42,22 @@ export default function Utama () {
                 <Link to={`/film/${film.slug}`}>
                     <div className="card shadow " >
                         <img src={film.image} className="card border-0" alt={film.nama} style={{objectFit:"cover",height:"200px"}} />
+                        <div className="position-absolute w-100 d-flex justify-content-between">
+                            <div className=""></div>
+                            <div className="bg-dark p-1 opacity-75" style={{fontSize:"12px",borderRadius:"0px 0px 0px 5px"}} >
+                                <i className="bi bi-star-fill" style={{color:"yellow"}}></i>
+                                <div className="d-inline ms-1 text-white fw-bold me-2">
+                                    {film.rating}
+                                </div>
+                                <i className="bi bi-film fw-bold" style={film.kualitas === "HD" || film.kualitas === "FHD"  ? {color:"green"} : {color:"red"}}></i>
+                                <div className="d-inline ms-1 text-white">
+                                    {film.kualitas}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="position-absolute bottom-0 bg-dark w-100 opacity-75 p-1">
+                            <div className="text-white text-truncate">{film.nama}</div>
+                        </div>
                     </div>
                 </Link>
             </div>

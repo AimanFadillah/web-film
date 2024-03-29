@@ -1,16 +1,18 @@
-*::-webkit-scrollbar{display: none}
+*::-webkit-scrollbar {
+    display: none
+}
+
+.card {
+    overflow: hidden;
+    position: relative;
+}
 
 .card img {
     transition: transform 0.3s ease;
 }
 
-.card .card-body {
-    display: none;
-}
-
 .card:hover img {
-    z-index: 998;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 iframe {
