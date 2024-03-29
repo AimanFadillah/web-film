@@ -5,18 +5,23 @@ import Loading from "../component/Loading";
 
 export default function Show () {
     const slug = useParams().slug
-    const [film,setFilm] = useState();
-    const [iframe,setIframe] = useState();
+    const [film,setFilm] = useState(history.state.film || undefined);
+    const [iframe,setIframe] = useState(history.state.iframe || undefined);
     const [namaIframe,setNamaIframe] = useState();
 
     useEffect(() => {
-        getFilm();
+        !film ? getFilm() : undefined;
     },[]);
 
     const getFilm = useCallback(async () => {
         const response = await ConfigAxios.get(`/films/${slug}`);
+        response.data.iframes.reverse()
         setFilm(response.data)
-        setIframe(response.data.iframes[response.data.iframes.length - 1].iframe);
+        setIframe(response.data.iframes[0].iframe);
+        history.replaceState({
+            film:response.data,
+            iframe:response.data.iframes[0].iframe
+        },"","");
     },[]);
 
     return film ? <div className="container mt-2">
@@ -37,7 +42,10 @@ export default function Show () {
                             <li key={index} ><div onClick={() => {
                                 setIframe(iframe.iframe)
                                 setNamaIframe(`Server ${index + 1}`)
-                            }} class="dropdown-item pointer" href="#">Server {index + 1}</div></li>
+                                const newState = history.state;
+                                newState.iframe = iframe.iframe;
+                                history.replaceState(newState,"","");
+                            }} className="dropdown-item pointer" href="#">Server {index + 1}</div></li>
                         ) : ""}
                     </ul>
                 </div>
