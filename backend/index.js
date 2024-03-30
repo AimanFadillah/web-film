@@ -45,7 +45,7 @@ app.get("/films/:slug", async (req, res) => {
         const iframes = [];
         $("#server-list .server-wrapper").each((index, element) => {
             iframes.push({
-                iframe: `https://rebahin.shop/iembed/?source=${$(element).find(".server").attr("data-iframe")}`
+                iframe: `${endpoint}/iembed/?source=${$(element).find(".server").attr("data-iframe")}`
             });
         })
         const data = {
