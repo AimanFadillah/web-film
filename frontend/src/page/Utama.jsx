@@ -3,6 +3,7 @@ import ConfigAxios from "../variabel/ConfigAxios";
 import { Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../component/Loading";
+import Navbar from "../component/Navbar";
 
 export default function Utama () {
     const [films,setFilms] = useState(history.state.films || false);
@@ -33,7 +34,7 @@ export default function Utama () {
         setPage(reset ? 2 : page + 1)
     },[films,search]);
 
-    return <div className="container mt-2">
+    return <Navbar>
         <div className="row">
             <div className="col-md-12">
                 <form onSubmit={async (e) => {
@@ -91,5 +92,5 @@ export default function Utama () {
         <div className="search">
 
         </div>
-    </div>
+    </Navbar>
 }

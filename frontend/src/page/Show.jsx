@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import ConfigAxios from "../variabel/ConfigAxios";
 import Loading from "../component/Loading";
+import Navbar from "../component/Navbar";
 
 export default function Show () {
     const slug = useParams().slug
@@ -15,7 +16,6 @@ export default function Show () {
 
     const getFilm = useCallback(async () => {
         const response = await ConfigAxios.get(`/films/${slug}`);
-        response.data.iframes.reverse()
         setFilm(response.data)
         setIframe(response.data.iframes[0].iframe);
         history.replaceState({
@@ -24,12 +24,12 @@ export default function Show () {
         },"","");
     },[]);
 
-    return film ? <div className="container mt-2">
-        <div className="row">
-            <div className="col-md-12" style={{height:"500px"}} >
+    return film ? <Navbar>
+        <div className="row justify-content-center">
+            <div className="col-11" id="wadahIframe" >
                 <iframe sandbox="allow-same-origin allow-scripts allow-forms" src={iframe} allowFullScreen ></iframe>
             </div>
-            <div className="col-md-12 d-flex justify-content-between px-4">
+            <div className="col-11 d-flex justify-content-between mt-3">
                 <div className="">
                     <h3>{film.nama}</h3>
                 </div>
@@ -51,5 +51,5 @@ export default function Show () {
                 </div>
             </div>
         </div>
-    </div> : <Loading />
+    </Navbar> : <Loading />
 }

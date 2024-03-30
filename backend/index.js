@@ -43,15 +43,35 @@ app.get("/films/:slug", async (req, res) => {
         const response = await axios.get(`${endpoint}/${slug}/play/`);
         const $ = cheerio.load(response.data);
         const iframes = [];
+        const deskripsi = [];
+        const download = [];
         $("#server-list .server-wrapper").each((index, element) => {
             iframes.push({
                 iframe: `${endpoint}/iembed/?source=${$(element).find(".server").attr("data-iframe")}`
             });
         })
+        $(".desc-des-pendek").find("p").each((index, element) => {
+            deskripsi.push({
+                text: $(element).text()
+            })
+        });
+        $("#dlm").find("div > table > tbody > tr").each((index, element) => {
+            download.push({
+                kualitas: $(element).text()
+            })
+        })
         const data = {
             nama: $(".mvic-tagline2 > h3").text(),
             image: (($(".mvic-thumb").attr("style").split("url("))[1]).split(")")[0],
-            iframes
+            view: $(".bp-btn-views").find("span").text(),
+            durasi: $(".mv-stat").text().split("|")[1].trim().replace(".", ""),
+            kualitas: $(".mv-stat").text().split("|")[0].trim(),
+            negara: $(".mv-stat").text().split("|")[2].trim(),
+            genre: $(".mv-stat").text().split("|")[3].trim(),
+            aktor: $("#cast").find("span").text(),
+            deskripsi,
+            iframes,
+            download,
         }
         return res.status(200).json(data);
     } catch (e) {

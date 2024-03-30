@@ -2,6 +2,10 @@
     display: none
 }
 
+* {
+    font-family: "Poppins", sans-serif;
+}
+
 .card {
     overflow: hidden;
     position: relative;
@@ -15,12 +19,31 @@
     transform: scale(1.1);
 }
 
-iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 33px;
-}
-
 .pointer {
     cursor: pointer;
+}
+
+#wadahIframe {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    border-radius: 10px;
+}
+
+iframe {
+    -webkit-transform: scale(1.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    iframe {
+        -webkit-transform: scale(1.03);
+    }
 }
