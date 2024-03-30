@@ -27,12 +27,11 @@
     position: relative;
     height: 0;
     overflow: hidden;
-    padding-bottom: 56.25%;
-    border-radius: 10px;
+    padding-bottom: 52%;
 }
 
 iframe {
-    -webkit-transform: scale(1.1);
+    -webkit-transform: scale(1.11);
     position: absolute;
     top: 0;
     left: 0;
@@ -42,8 +41,14 @@ iframe {
     height: 100%;
 }
 
+.w-md-100 {}
+
 @media (min-width: 768px) {
     iframe {
         -webkit-transform: scale(1.03);
+    }
+
+    .w-md-100 {
+        width: 100%;
     }
 }

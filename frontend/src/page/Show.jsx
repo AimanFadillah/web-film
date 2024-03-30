@@ -26,13 +26,12 @@ export default function Show () {
 
     return film ? <Navbar>
         <div className="row justify-content-center">
-            <div className="col-11" id="wadahIframe" >
-                <iframe sandbox="allow-same-origin allow-scripts allow-forms" src={iframe} allowFullScreen ></iframe>
-            </div>
-            <div className="col-11 d-flex justify-content-between mt-3">
-                <div className="">
-                    <h3>{film.nama}</h3>
+            <div className="col-12"  >
+                <div id="wadahIframe" >
+                    <iframe sandbox="allow-same-origin allow-scripts allow-forms" src={iframe} allowFullScreen ></iframe>
                 </div>
+            </div>
+            <div className="col-12 d-flex justify-content-between my-3">
                 <div className="dropdown">
                     <button className="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {namaIframe || "Pilih Server"}
@@ -49,6 +48,35 @@ export default function Show () {
                         ) : ""}
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div className="row justify-content-center">
+            <div className="col-12 col-md-3 mb-4">
+                <div className="d-flex justify-content-center">
+                    <img className="w-md-100 rounded img-fluid" src={film.image} alt={film.nama} />
+                </div>
+            </div>
+            <div className="col-12 col-md-9">
+                <div className="">
+                    <ul className="list-group">
+                        <li className="list-group-item fw-bold fs-5">
+                            {film.nama}
+                        </li>
+                        <li className="list-group-item">{film.genre}</li>
+                        <li className="list-group-item">{film.view}</li>
+                        <li className="list-group-item">{film.durasi}</li>
+                        <li className={`list-group-item ${film.kualitas.includes("CAM") ? "bg-danger" : "bg-success"}`}>
+                            {film.kualitas}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className="col-12 mt-3" >
+                {film.deskripsi.map((deskripsi,index) => 
+                    <p key={index} className="p-1" >
+                        {deskripsi}
+                    </p>
+                )}
             </div>
         </div>
     </Navbar> : <Loading />
