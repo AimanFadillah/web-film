@@ -20,11 +20,14 @@ export default function Utama () {
         if(response.data.length == 0){
             setHasMore(false)
         }
+        if(reset){
+            setHasMore(true)
+        }
         setFilms(films && !reset ?  [...films,...response.data] : response.data);
         history.replaceState({
             films:films  && !reset ?  [...films,...response.data] : response.data,
             page:page + 1,
-            hasMore:hasMore,
+            hasMore:reset ? true : hasMore,
             search:search,
         },"","");
         setPage(reset ? 2 : page + 1)
