@@ -51,9 +51,7 @@ app.get("/films/:slug", async (req, res) => {
             });
         })
         $(".desc-des-pendek").find("p").each((index, element) => {
-            deskripsi.push({
-                text: $(element).text()
-            })
+            deskripsi.push($(element).text())
         });
         $("#dlm").find("div > table > tbody > tr").each((index, element) => {
             download.push({
