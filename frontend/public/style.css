@@ -63,6 +63,27 @@
     color: #63687a !important;
 }
 
+/* WARNA Kuning */
+
+.bg-warning {
+    background-color: #1F1A19 !important;
+}
+
+.btn-warning {
+    background-color: #1F1A19 !important;
+    border-color: #1F1A19 !important;
+}
+
+.border-warning {
+    border-color: #1F1A19 !important;
+}
+
+.text-warning {
+    color: #1F1A19 !important;
+}
+
+
+
 .transisi-gambar {
     position: absolute;
     top: 0;

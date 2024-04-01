@@ -96,7 +96,7 @@ export default function Utama () {
                 </form>
             </div>
         </div> */}
-        <div className="row bg-secondary my-4 rounded p-3 mx-0">
+        <div className="row bg-secondary mt-4 rounded p-3 mx-0">
             <div className="col-md-5">
                 <div className="p-2 py-3">
                     <div className="position-relative"  style={{height:"350px"}}>
@@ -128,9 +128,30 @@ export default function Utama () {
                 )}
             </div>
         </div>
+        <div className="row my-4 mx-0 justify-content-between">
+            <div className="col-lg-4 border border-secondary bg-secondary rounded-5 p-1 d-flex justify-content-between">
+                <div className="rounded-5 py-2 px-4 bg-primary" >
+                    Rekomendasi
+                </div>
+                <div className=" rounded-5 py-2 px-4 " >
+                    Terbaru
+                </div>
+                <div className="rounded-5 py-2 px-4 " >
+                    CAM
+                </div>
+            </div> 
+            <div className="col-md-2 d-flex align-items-center justify-content-end p-0">
+                <div onClick={() => setIndexLanding(indexLanding - 1 < 0 ? gambarLanding.length - 1 : indexLanding - 1 )} className="pointer rounded-circle border  d-inline me-3" style={{padding:"10px 14px"}} >
+                    <i className="bi bi-chevron-left"></i>
+                </div>
+                <div onClick={() => setIndexLanding(indexLanding - 1 < 0 ? gambarLanding.length - 1 : indexLanding - 1 )} className="pointer rounded-circle border  d-inline me-3" style={{padding:"10px 14px"}} >
+                    <i className="bi bi-chevron-right"></i>
+                </div>
+            </div>
+        </div>
         {films ? 
         <InfiniteScroll
-        className="row"
+        className="row bg-secondary pt-3 rounded m-0"
         hasMore={hasMore}
         next={getFilms}
         dataLength={films.length}
@@ -142,10 +163,10 @@ export default function Utama () {
         }
         >
             {films.map((film,index) => !film.slug.includes("series") ? 
-            <div className="col-6 col-md-2 mb-3" key={index}>
-                <Link to={`/film/${film.slug}`}>
+            <div className="col-6 col-md-3 mb-3" key={index}>
+                {/* <Link to={`/film/${film.slug}`}>
                     <div className="card shadow " >
-                        <img src={film.image} className="card border-0" alt={film.nama} style={{objectFit:"cover",height:"200px"}} />
+                        <img src={film.image} className="card border-0" alt={film.nama} style={{objectFit:"cover",height:"300px"}} />
                         <div className=" position-absolute w-100 d-flex justify-content-between">
                             <div className=""></div>
                             <div className="bg-dark p-1 opacity-75" style={{fontSize:"12px",borderRadius:"0px 0px 0px 5px"}} >
@@ -153,7 +174,7 @@ export default function Utama () {
                                 <div className="d-inline ms-1 text-white fw-bold me-2">
                                     {film.rating}
                                 </div>
-                                <i className="bi bi-film fw-bold" style={!film.kualitas.includes("CAM")  ? {color:"green"} : {color:"red"}}></i>
+                                <i className="bi bi-film fw-b={!film.kualitas.includes("CAM")  ? {color:"green"} : {color:"red"}}></i>
                                 <div className="d-inline ms-1 text-white">
                                     {film.kualitas}
                                 </div>
@@ -163,7 +184,33 @@ export default function Utama () {
                             <div className="text-white text-truncate">{film.nama}</div>
                         </div>
                     </div>
-                </Link>
+                </Link> */} 
+                <div className="bg-dark p-2 rounded h-100 d-flex flex-column justify-content-between">
+                    <img src={film.image} className="w-100" alt={film.nama} style={{objectFit:"cover",height:"280px"}} />
+                    <div className="d-flex justify-content-between pt-2 px-1">
+                        <div className="w-75 ">
+                            {film.nama}
+                        </div>
+                        <div className={`${film.rating === "" ? "d-none" : "d-flex"} justify-content-end p-1 bg-warning rounded-5 px-2`} style={{height:"23px",fontSize:"10px"}} >
+                            <i className="bi bi-star-fill me-1" style={{color:"yellow"}}></i> {film.rating}
+                        </div>
+                    </div>
+                    <div className="">
+                        <table className="text-secondary mx-1 mt-2" style={{ fontSize:"12px" }}>
+                            <tbody>
+                                <tr>
+                                    <td>Kualitas</td>
+                                    <td>: {film.kualitas}</td>
+                                </tr>
+                                <tr>
+                                    <td>Durasi</td>
+                                    <td>: {film.durasi} Min</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <Link to={`/film/${film.slug}`} className="btn btn-primary w-100 mt-3" >Nonton</Link>
+                </div>
             </div> : undefined
             )}
         </InfiniteScroll>
