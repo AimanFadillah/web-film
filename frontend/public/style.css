@@ -63,6 +63,18 @@
     color: #63687a !important;
 }
 
+.transisi-gambar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.transisi-gambar.active {
+    opacity: 1;
+}
+
 .placeholder-secondary::placeholder {
     color: #63687a;
 }
