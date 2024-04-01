@@ -35,7 +35,7 @@ export default function Utama () {
     },[films,search]);
 
     return <Navbar>
-        <div className="row">
+        {/* <div className="row">
             <div className="col-md-12">
                 <form onSubmit={async (e) => {
                     e.preventDefault();
@@ -47,6 +47,21 @@ export default function Utama () {
                     <input name="search" type="text" onChange={(e) => setSearch(e.target.value)} value={search} className="form-control" placeholder="Cari Film" />
                     <button className="btn btn-primary">Cari</button>
                 </form>
+            </div>
+        </div> */}
+        <div className="row bg-secondary my-4 rounded p-3 mx-0">
+            <div className="col-md-5">
+                <div className="p-2 py-3">
+                    <h6 className="text-primary" >Action, Adventure, Fantasy</h6>
+                    <h1 className="fw-bold" >The Marvels</h1>
+                    <p className="mt-3 text-secondary" style={{fontSize:"15px",width:"90%"}} >
+                        Carol Danvers menghancurkan Supreme Intelligence, kecerdasan buatan yang memimpin kekaisaran Kree.Hal ini menyebabkan perang saudara dan kehancuran dunia asal Kree, Hala, selama 30 tahun ke depan. Konflik ini membuat planet ini menjadi tandus karena kehilangan udara, air, dan sinar matahari.
+                    </p>
+                    <button className="btn btn-primary rounded-5 py-2 px-4 mt-4" ><i className="bi bi-film"></i> Nonton Sekarang</button>
+                </div>
+            </div>
+            <div className="col-md-7 p-0 ">
+                <img src="/images/marvels.jpg" className="border border-secondary border-3 rounded img-fluid w-100" style={{objectFit:"cover",height:"450px"}} alt="" />
             </div>
         </div>
         {films ? 

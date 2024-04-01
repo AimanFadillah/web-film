@@ -6,6 +6,79 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* WARNA UTAMA */
+
+.bg-primary {
+    background-color: #7024B9 !important;
+}
+
+.btn-primary {
+    background-color: #7024B9 !important;
+    border-color: #7024B9 !important;
+}
+
+.border-primary {
+    border-color: #7024B9 !important;
+}
+
+.text-primary {
+    color: #7024B9 !important;
+}
+
+/* WARNA DARK */
+
+.bg-dark {
+    background-color: #060B1C !important;
+}
+
+.btn-dark {
+    background-color: #060B1C !important;
+    border-color: #060B1C !important;
+}
+
+.border-dark {
+    border-color: #060B1C !important;
+}
+
+.text-dark {
+    color: #060B1C !important;
+}
+
+/* WARNA ABU */
+
+.bg-secondary {
+    background-color: #0E1428 !important;
+}
+
+.btn-secondary {
+    background-color: #0E1428 !important;
+    border-color: #0E1428 !important;
+}
+
+.border-secondary {
+    border-color: #1A2033 !important;
+}
+
+.text-secondary {
+    color: #63687a !important;
+}
+
+.placeholder-secondary::placeholder {
+    color: #63687a;
+}
+
+.gradient-primary {
+    background: linear-gradient(to bottom,
+            rgba(112, 36, 185, 0),
+            rgba(112, 36, 185, 0),
+            rgba(112, 36, 185, 0.1),
+            rgba(112, 36, 185, 0.2));
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
 .card {
     overflow: hidden;
     position: relative;
