@@ -2,7 +2,7 @@ const app = require("express")();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const cors = require("cors");
-const endpoint = "https://rebahin.blog"
+const endpoint = "https://rebahinxxi.shop"
 
 app.use(cors());
 
