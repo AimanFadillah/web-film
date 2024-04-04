@@ -53,7 +53,7 @@ export default function Show () {
         <div className="row justify-content-center">
             <div className="col-12 col-md-3 mb-4">
                 <div className="d-flex justify-content-center">
-                    <img className="w-md-100 rounded img-fluid" src={film.image} alt={film.nama} />
+                    <img className="w-md-100 rounded img-fluid" src={film.image.includes("https") ? film.image : `https://rebahinxxi.shop/${film.image}`} alt={film.nama} />
                 </div>
             </div>
             <div className="col-12 col-md-9">
