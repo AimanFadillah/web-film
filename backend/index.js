@@ -4,6 +4,8 @@ const cheerio = require("cheerio");
 const cors = require("cors");
 const endpoint = "https://rebahinxxi.shop"
 
+app.use(cors());
+
 app.get("/recommended",async (req,res) => {
     try{
         const page = req.query.page || 1;
