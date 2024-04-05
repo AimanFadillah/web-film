@@ -27,8 +27,10 @@ export default function Show () {
     return film ? <Navbar>
         <div className="row justify-content-center">
             <div className="col-12"  >
-                <div id="wadahIframe" >
+                <div id="wadahIframe"  >
                     <iframe sandbox="allow-same-origin allow-scripts allow-forms" src={iframe} allowFullScreen ></iframe>
+                    <div className="top-0 start-0 w-100 h-100" style={{position:"absolute",border:"9px solid black",pointerEvents:"none"}}>
+                    </div>
                 </div>
             </div>
             <div className="col-12 d-flex justify-content-between my-3">
@@ -53,7 +55,7 @@ export default function Show () {
         <div className="row justify-content-center">
             <div className="col-12 col-md-3 mb-4">
                 <div className="d-flex justify-content-center">
-                    <img className="w-md-100 rounded img-fluid" src={film.image.includes("https") ? film.image : `https://rebahinxxi.shop/${film.image}`} alt={film.nama} />
+                    <img className="w-md-100 rounded img-fluid"  src={film.image.includes("https") ? film.image : `https://rebahinxxi.shop${film.image}`} alt={film.nama} />
                 </div>
             </div>
             <div className="col-12 col-md-9">
