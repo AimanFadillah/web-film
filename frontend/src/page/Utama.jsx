@@ -87,8 +87,6 @@ export default function Utama () {
         setPage(reset ? 2 : page + 1)
     },[films,search]);
 
-    console.log(pilihan)
-    
     return <Navbar>
         {/* <div className="row">
             <div className="col-md-12">
@@ -105,7 +103,7 @@ export default function Utama () {
             </div>
         </div> */}
         <div className="row bg-secondary mt-4 rounded p-3 mx-0">
-            <div className="col-md-5 order-md-1 order-2 ">
+            <div className="col-md-5 order-md-1 order-2 p-hp-0   ">
                 <div className=" py-3">
                     <div className="position-relative"  style={{height:"350px"}}>
                         {gambarLanding.map((gambar,index) => 
@@ -177,11 +175,11 @@ export default function Utama () {
         }
         >
             {films.map((film,index) => !film.slug.includes("series") ? 
-            <div className="col-6 col-md-3 mb-3" key={index}>
+            <div className="col-12 col-md-3 mb-3" key={index}>
                 <div onClick={() => nav(`/film/${film.slug}`)} className="bg-dark p-2 rounded h-100 d-flex flex-column justify-content-between">
-                    <img src={film.image} className="w-100 h-card" alt={film.nama} style={{objectFit:"cover"}} />
+                    <img src={film.image} className="w-100 h-100" alt={film.nama} style={{objectFit:"cover"}} />
                     <div className="d-flex justify-content-between pt-2 px-1">
-                        <div className="w-75 ">
+                        <div className="w-text-card  ">
                             {film.nama}
                         </div>
                         <div className={`${film.rating === "" ? "d-none" : "d-flex"} justify-content-end p-1 bg-warning rounded-5 px-2`} style={{height:"23px",fontSize:"10px"}} >

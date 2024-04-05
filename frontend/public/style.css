@@ -149,8 +149,20 @@ iframe {
     height: 350px
 }
 
-.h-card{
-    height: 200px;
+.w-text-card {
+    width: 100%;
+}
+
+.p-hp-0 {
+    padding: 0;
+}
+
+.px-hp-3 {
+    padding: 0px 13px;
+}
+
+.navbar-toggler:active {
+    border: none !important
 }
 
 @media (min-width: 768px) {
@@ -166,7 +178,15 @@ iframe {
         height: 100%
     }
 
-    .h-card{
-        height: 280px;
+    .w-text-card {
+        width: 75%;
+    }
+
+    .p-hp-0 {
+        padding: 0px 10px;
+    }
+
+    .px-hp-3 {
+        padding: 0px;
     }
 }
