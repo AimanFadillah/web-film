@@ -53,27 +53,7 @@ export default function Show () {
                 </div>
             </div>
         </div>
-        <div className="row justify-content-center mt-3">
-            {/* <div className="col-12 col-md-3 mb-4">
-                <div className="d-flex justify-content-center">
-                    <img className="w-md-100 rounded img-fluid"  src={film.image.includes("https") ? film.image : `https://rebahinxxi.shop${film.image}`} alt={film.nama} />
-                </div>
-            </div>
-            <div className="col-12 col-md-9">
-                <div className="">
-                    <ul className="bg-secondary">
-                        <li className="list-group-item fw-bold fs-5">
-                            {film.nama}
-                        </li>
-                        <li className="list-group-item">{film.genre}</li>
-                        <li className="list-group-item">{film.view}</li>
-                        <li className="list-group-item">{film.durasi}</li>
-                        <li className={`list-group-item ${film.kualitas.includes("CAM") ? "bg-danger" : "bg-success"}`}>
-                            {film.kualitas}
-                        </li>
-                    </ul>
-                </div>
-            </div> */}
+        <div className="row justify-content-center my-3">
             <div className="col-12 col-md-3 mb-3 ">
                 <div className="bg-secondary p-2 rounded h-100 d-flex flex-column justify-content-between">
                     <img src={film.image.includes("https") ? film.image : `https://rebahinxxi.shop${film.image}`} className="rounded w-100 h-100" alt={film.nama} style={{objectFit:"cover"}} />

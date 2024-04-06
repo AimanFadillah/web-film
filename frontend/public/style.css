@@ -88,10 +88,13 @@
     left: 0;
     opacity: 0;
     transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .transisi-gambar.active {
     opacity: 1;
+    pointer-events: all;
+    z-index: 900;
 }
 
 .placeholder-secondary::placeholder {
@@ -131,7 +134,7 @@
     position: relative;
     height: 0;
     overflow: hidden;
-    padding-bottom: 68%;
+    padding-bottom:56.25%;
     border-radius: 10px;
 }
 
@@ -171,14 +174,6 @@ iframe {
 }
 
 @media (min-width: 768px) {
-
-    #wadahIframe {
-        position: relative;
-        height: 0;
-        overflow: hidden;
-        padding-bottom:56.25%;
-        border-radius: 10px;
-    }
 
     .w-md-100 {
         width: 100%;

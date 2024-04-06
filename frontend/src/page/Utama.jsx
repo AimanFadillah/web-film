@@ -11,35 +11,35 @@ const gambarLanding = [
         src:"/images/marvels.jpg",
         genre:"Action, Adventure, Fantasy",
         sinopis:"Carol Danvers menghancurkan Supreme Intelligence, kecerdasan buatan yang memimpin kekaisaran Kree.Hal ini menyebabkan perang saudara dan kehancuran dunia asal Kree, Hala, selama 30 tahun ke depan. Konflik ini membuat planet ini menjadi tandus karena kehilangan udara, air, dan sinar matahari.",
-        slug:""
+        slug:"/film/nonton-film-the-marvels-sub-indo"
     },
     {
         nama:"Oppenheimer",
         src:"/images/oppenheimer.jpg",
         genre:"Biography, Drama, History",
         sinopis:"Kisah tentang seorang fisikawan Amerika Serikat bernama J. Robert Oppenheimer yang mengembangkan bom atom.",
-        slug:""
+        slug:"/film/nonton-film-oppenheimer-2023-sub-indo"
     },
     {
         nama:"The Nun 2",
         src:"/images/nun2.jpg",
         genre:"Horror, Mystery, Thriller",
         sinopis:"Berlatar tahun 1956, bermula dari pembunuhan seorang pendeta, Suster Irene (Taissa Farmiga) sekali lagi berhadapan dengan kekuatan jahat yang sangat besar, Valak sang biarawati iblis demi kedamaian hidupnya serta orang-orang di sekitarnya.",
-        slug:""
+        slug:"/film/nonton-film-the-nun-ii-2023-sub-indo"
     },
     {
         nama:"Migration",
         src:"/images/migration.jpg",
         genre:"Animation, Adventure, Comedy, Family",
         sinopis:"Migration adalah sebuah film animasi Amerika Serikat tahun 2023 yang disutradarai oleh Mike White. Para pengisi suaranya meliputi Kumail Nanjani sebagai Mack, Elizabeth Banks sebagai Pam, Tresi Gazal sebagai Gwen dan Caspar Jennings sebagai Dax",
-        slug:""
+        slug:"/film/nonton-film-migration-2023-sub-indo"
     },
     {
         nama:"Fast X",
         src:"/images/fastx.jpg",
         genre:"Action, Adventure, Mystery, Thriller",
         sinopis:"Selama banyak misi dan melawan rintangan yang mustahil, Dom Toretto dan keluarganya telah mengakali dan mengalahkan setiap musuh di jalan mereka. Sekarang, mereka menghadapi lawan paling mematikan yang pernah mereka hadapi",
-        slug:""
+        slug:"/film/nonton-film-fast-x-2023-sub-indo"
     },
 ]
 
@@ -48,7 +48,6 @@ export default function Utama () {
     const [films,setFilms] = useState(history.state.films || false);
     const [page,setPage] = useState(history.state.page || 1);
     const [hasMore,setHasMore] = useState(history.state.hasMore || true)
-    const [search,setSearch] = useState(history.state.search || "");
     const [indexLanding,setIndexLanding] = useState(0);
     const [pilihan,setPilihan] = useState(history.state.pilihan || 0);
     const nav = useNavigate();
@@ -68,7 +67,7 @@ export default function Utama () {
         setPilihan(index)
         reset ? setFilms(false) : undefined
         const response = await ConfigAxios.get(
-            index == 1 ? `/films?page=${reset ? 1 : page}&s=${search}` : 
+            index == 1 ? `/films?page=${reset ? 1 : page}` : 
             index == 2 ? `/cam?page=${reset ? 1 : page}` : `/recommended?page=${reset ? 1 : page}`);
         if(response.data.length == 0){
             setHasMore(false)
@@ -81,11 +80,10 @@ export default function Utama () {
             films:films  && !reset ?  [...films,...response.data] : response.data,
             page:page + 1,
             hasMore:reset ? true : hasMore,
-            search:search,
             pilihan:index,
         },"","");
         setPage(reset ? 2 : page + 1)
-    },[films,search]);
+    },[films]);
 
     return <Navbar>
         <div className="row bg-secondary mt-4 rounded p-3 mx-0">
@@ -97,7 +95,7 @@ export default function Utama () {
                             <h6 className="text-primary" >{gambar.genre}</h6>
                             <h1 className="fw-bold" >{gambar.nama}</h1>
                             <p className="mt-3 text-secondary" style={{fontSize:"15px",width:"90%"}} >{gambar.sinopis}</p>
-                            <button className="btn btn-primary rounded-5 py-2 px-4 mt-4" ><i className="bi bi-film"></i> Nonton Sekarang</button>
+                            <button onClick={() => nav(gambar.slug)} data-slug={gambar.slug} className="border btn btn-primary rounded-5 py-2 px-4 mt-4" ><i className="bi bi-film"></i> Nonton Sekarang</button>
                         </div>
                         )}
                     </div>
