@@ -24,8 +24,9 @@ export default function Show () {
         },"","");
     },[]);
 
-    return film ? <Navbar>
-        <div className="row justify-content-center">
+    return <Navbar>
+        {film ? <>
+            <div className="row justify-content-center">
             <div className="col-12"  >
                 <div id="wadahIframe"  >
                     <iframe sandbox="allow-same-origin allow-scripts allow-forms" src={iframe} allowFullScreen ></iframe>
@@ -81,5 +82,6 @@ export default function Show () {
                 )}
             </div>
         </div>
-    </Navbar> : <Loading />
+        </> : <Loading /> }
+    </Navbar> 
 }

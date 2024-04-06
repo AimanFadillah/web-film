@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import ConfigAxios from "../variabel/ConfigAxios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../component/Loading";
 import Navbar from "../component/Navbar";
@@ -206,9 +206,6 @@ export default function Utama () {
             )}
         </InfiniteScroll>
         : <Loading height="800px" /> }
-        <div className="search">
-
-        </div>
     </Navbar>
 }
 

@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom"
-import { useEffect } from "react";
+import { Link , useNavigate } from "react-router-dom"
+import { useContext, useEffect, useState } from "react";
+import DataContext from "../variabel/DataContext";
 
 export default function Navbar ({children}) {
+    const {search,setSearch} = useContext(DataContext);
+    const [input,setInput] = useState(false);
+    const nav = useNavigate()
 
     useEffect(() => {
         document.body.removeAttribute("style");
@@ -15,7 +19,7 @@ export default function Navbar ({children}) {
             <button type="button" className="navbar-toggler mb-2 border-0 " data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon "></span>
             </button>
-            <div className="d-md-none fs-2 me-1 mb-2">
+            <div onClick={() => setInput(!input)} className="d-md-none fs-2 me-1 mb-2">
                 <i className="bi bi-search text-secondary"></i>
             </div>
             <div className="offcanvas bg-dark offcanvas-start" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -30,11 +34,27 @@ export default function Navbar ({children}) {
                     <NavLink text={"Kontak"} to={"/"}/>
                 </ul>
             </div>
-            <div className="d-none d-md-block pb-2" >
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                const s = new FormData(e.target).get("s");
+                setSearch(s);
+                nav(`/search?s=${s}`);
+            }} className="d-none d-md-block pb-2" >
                 <div className="input-group">
-                    <button className="btn bg-dark pe-0 border-0 rounded-1 text-secondary" type="button"><i className="bi bi-search"></i></button>
-                    <input type="text" className="border-0 ps-2 form-control bg-dark rounded-1 placeholder-secondary" placeholder="Cari Film" />
+                    <button className="btn bg-dark pe-0 border-0 text-secondary"><i className="bi bi-search"></i></button>
+                    <input type="text" name="s" defaultValue={search} className="border-0 ps-2 form-control bg-dark  placeholder-secondary" placeholder="Cari Film" />
                 </div>
+            </form>
+            <div className={`${input ? "d-block" : "d-none"} d-md-none position-absolute end-0 m-2`} style={{zIndex:"999",pointerEvents:"none"}} >
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    const s = new FormData(e.target).get("s");
+                    setSearch(s);
+                    nav(`/search?s=${s}`);
+                }} className="input-group rounded border" style={{marginTop:"100px",pointerEvents:"all"}}>
+                    <button className="btn bg-dark pe-0 border-0 text-secondary"><i className="bi bi-search"></i></button>
+                    <input type="text" name="s" defaultValue={search} className="border-0 ps-2 form-control bg-dark  placeholder-secondary" placeholder="Cari Film" />
+                </form>
             </div>
         </div>
     </nav>
