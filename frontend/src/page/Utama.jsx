@@ -88,20 +88,6 @@ export default function Utama () {
     },[films,search]);
 
     return <Navbar>
-        {/* <div className="row">
-            <div className="col-md-12">
-                <form onSubmit={async (e) => {
-                    e.preventDefault();
-                    const button = e.target.querySelector("button");
-                    button.setAttribute("disabled","")
-                    await getFilms(true)
-                    button.removeAttribute("disabled","")
-                }} className="input-group mb-3">
-                    <input name="search" type="text" onChange={(e) => setSearch(e.target.value)} value={search} className="form-control" placeholder="Cari Film" />
-                    <button className="btn btn-primary">Cari</button>
-                </form>
-            </div>
-        </div> */}
         <div className="row bg-secondary mt-4 rounded p-3 mx-0">
             <div className="col-md-5 order-md-1 order-2 p-hp-0   ">
                 <div className=" py-3">
@@ -177,7 +163,7 @@ export default function Utama () {
             {films.map((film,index) => !film.slug.includes("series") ? 
             <div className="col-12 col-md-3 mb-3" key={index}>
                 <div onClick={() => nav(`/film/${film.slug}`)} className="bg-dark p-2 rounded h-100 d-flex flex-column justify-content-between">
-                    <img src={film.image} className="w-100 h-100" alt={film.nama} style={{objectFit:"cover"}} />
+                    <img src={film.image} className="rounded w-100 h-100" alt={film.nama} style={{objectFit:"cover"}} />
                     <div className="d-flex justify-content-between pt-2 px-1">
                         <div className="w-text-card  ">
                             {film.nama}

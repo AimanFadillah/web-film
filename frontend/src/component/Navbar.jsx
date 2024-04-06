@@ -45,13 +45,13 @@ export default function Navbar ({children}) {
                     <input type="text" name="s" defaultValue={search} className="border-0 ps-2 form-control bg-dark  placeholder-secondary" placeholder="Cari Film" />
                 </div>
             </form>
-            <div className={`${input ? "d-block" : "d-none"} d-md-none position-absolute end-0 m-2`} style={{zIndex:"999",pointerEvents:"none"}} >
+            <div className={`${input ? "d-block" : "d-none"} d-md-none position-absolute end-0 m-2 d-flex justify-content-end`} style={{zIndex:"999",pointerEvents:"none"}} >
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     const s = new FormData(e.target).get("s");
                     setSearch(s);
                     nav(`/search?s=${s}`);
-                }} className="input-group rounded border" style={{marginTop:"100px",pointerEvents:"all"}}>
+                }} className="input-group rounded border w-75" style={{marginTop:"100px",pointerEvents:"all"}}>
                     <button className="btn bg-dark pe-0 border-0 text-secondary"><i className="bi bi-search"></i></button>
                     <input type="text" name="s" defaultValue={search} className="border-0 ps-2 form-control bg-dark  placeholder-secondary" placeholder="Cari Film" />
                 </form>

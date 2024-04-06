@@ -131,7 +131,7 @@
     position: relative;
     height: 0;
     overflow: hidden;
-    padding-bottom: 56.25%;
+    padding-bottom: 68%;
     border-radius: 10px;
 }
 
@@ -166,7 +166,19 @@ iframe {
     border: none !important
 }
 
+.text-server{
+    font-size: 14px;
+}
+
 @media (min-width: 768px) {
+
+    #wadahIframe {
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        padding-bottom:56.25%;
+        border-radius: 10px;
+    }
 
     .w-md-100 {
         width: 100%;
@@ -186,5 +198,9 @@ iframe {
 
     .px-hp-3 {
         padding: 0px;
+    }
+
+    .text-server{
+        font-size: 17px;
     }
 }
