@@ -56,7 +56,7 @@ export default function Show () {
         <div className="row justify-content-center my-3">
             <div className="col-12 col-md-3 mb-3 ">
                 <div className="bg-secondary p-2 rounded d-flex flex-column justify-content-between">
-                    <img src={film.image.includes("https") ? film.image : `https://rebahinxxi.shop${film.image}`} className="rounded w-100 h-100" alt={film.nama} style={{objectFit:"cover"}} />
+                    <img src={film.image.includes("https") ? film.image : `https://rebahinxxi.shop${film.image}`} className="d-none d-md-block rounded w-100 h-100" alt={film.nama} style={{objectFit:"cover"}} />
                     <div className="d-flex justify-content-between pt-2 px-1">
                         <div className="">
                             {film.nama}
