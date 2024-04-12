@@ -44,10 +44,9 @@ export default function Search (){
         setPage(reset ? 2 : page + 1)
     },[films,search]);
 
-
     return <Navbar>
         <div className="container">
-        {films ? 
+        {films ? films.length > 0 ?
             <InfiniteScroll
             className="row bg-secondary pt-3 rounded m-0"
             hasMore={hasMore}
@@ -91,7 +90,11 @@ export default function Search (){
                 </div> : undefined
                 )}
             </InfiniteScroll>
-            : <Loading height="800px" /> }
+            : <div className="row rounded mt-4 justify-content-center">
+                <div className="col-md-5 col-12">
+                    <img src="/images/404.png" className="img-fluid" alt="image empty" />
+                </div>
+            </div> : <Loading height="800px" /> }
         </div>
     </Navbar>
 }
